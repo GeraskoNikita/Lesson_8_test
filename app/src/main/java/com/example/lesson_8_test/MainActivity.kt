@@ -26,13 +26,13 @@ class MainActivity : AppCompatActivity() {
 
         }
         db = Pref(this)
-        bining.tvValue.text = db.getPrev().toString()
+        bining.tvCount.text = db.getPrev().toString()
         swichButtonText()
 
-        bining.btSave.setOnClickListener {
-            var value = if (bining.btSave.text == "+") db.getPrev() + 1 else db.getPrev() - 1
+        bining.btCount.setOnClickListener {
+            var value = if (bining.btCount.text == "+") db.getPrev() + 1 else db.getPrev() - 1
             db.savePrev(value)
-            bining.tvValue.text = db.getPrev().toString()
+            bining.tvCount.text = db.getPrev().toString()
             swichButtonText()
 
 
@@ -42,10 +42,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun swichButtonText() {
-        if (bining.tvValue.text.toString().toInt() <= 0) {
-            bining.btSave.text = "+"
-        } else if (bining.tvValue.text.toString().toInt() >= 10) {
-            bining.btSave.text = "-"
+        if (bining.tvCount.text.toString().toInt() <= 0) {
+            bining.btCount.text = "+"
+        } else if (bining.tvCount.text.toString().toInt() >= 10) {
+            bining.btCount.text = "-"
         }
     }
 }
