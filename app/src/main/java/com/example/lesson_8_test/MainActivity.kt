@@ -22,8 +22,6 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
-
-
         }
         db = Pref(this)
         bining.tvCount.text = db.getPrev().toString()
@@ -37,10 +35,7 @@ class MainActivity : AppCompatActivity() {
 
 
         }
-
-
     }
-
     private fun swichButtonText() {
         if (bining.tvCount.text.toString().toInt() <= 0) {
             bining.btCount.text = "+"
