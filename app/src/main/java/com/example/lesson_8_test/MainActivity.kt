@@ -11,7 +11,7 @@ import com.example.lesson_8_test.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var db : Pref
+    private lateinit var db: Pref
     private lateinit var bining: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,14 +27,25 @@ class MainActivity : AppCompatActivity() {
         }
         db = Pref(this)
         bining.tvValue.text = db.getPrev().toString()
+        swichButtonText()
 
         bining.btSave.setOnClickListener {
-            db.savePrev(db.getPrev() + 1)
+            var value = if (bining.btSave.text == "+") db.getPrev() + 1 else db.getPrev() - 1
+            db.savePrev(value)
             bining.tvValue.text = db.getPrev().toString()
+            swichButtonText()
 
 
         }
 
 
+    }
+
+    private fun swichButtonText() {
+        if (bining.tvValue.text.toString().toInt() <= 0) {
+            bining.btSave.text = "+"
+        } else if (bining.tvValue.text.toString().toInt() >= 10) {
+            bining.btSave.text = "-"
+        }
     }
 }
